@@ -27,6 +27,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:var(--sumi);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.9;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -80,6 +81,41 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,44px);lin
 .how h3{font-family:var(--serif);font-weight:600;font-size:19px;margin-bottom:8px}
 .how li p{color:#c2bfb8;font-size:15px}
 .note{margin-top:48px;font-size:13px;color:var(--mist)}
+
+/* 購入（デモ） */
+.shop{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,96px);align-items:center}
+.shop figure{background:var(--ash)}
+.shop figure img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.demo{display:inline-block;font-size:12px;color:var(--sumi);background:var(--matcha);padding:2px 10px;margin-bottom:20px}
+.shop h2{margin-bottom:8px}
+.shop .sub{color:var(--mist);font-size:15px}
+.price{font-family:var(--serif);font-size:clamp(28px,3vw,36px);margin:28px 0 4px}
+.price small{font-family:var(--sans);font-size:13px;color:var(--mist);margin-left:10px}
+fieldset{border:0;margin-top:32px}
+legend{font-size:13px;color:var(--mist);margin-bottom:10px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opts label{cursor:pointer}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts .box{display:block;border:1px solid var(--rule);padding:10px 18px;font-size:14px;color:#cfccc5}
+.opts input:checked+.box{border-color:var(--paper);color:var(--paper);background:var(--ash)}
+.opts input:focus-visible+.box{outline:2px solid var(--matcha);outline-offset:3px}
+.buy{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.qty{display:flex;align-items:stretch;border:1px solid var(--rule)}
+.qty button{background:none;border:0;color:var(--paper);font:inherit;font-size:18px;width:44px;cursor:pointer}
+.qty output{min-width:36px;display:grid;place-items:center;font-size:15px}
+.buy .go{flex:1 1 220px;background:var(--paper);color:var(--sumi);border:0;font:inherit;font-size:16px;padding:16px 24px;cursor:pointer;transition:background .2s}
+.buy .go:hover{background:#fff}
+.ship{margin-top:20px;font-size:13px;color:var(--mist)}
+dialog{margin:auto;max-width:min(440px,calc(100vw - 40px));border:0;background:var(--paper);color:var(--sumi);padding:36px 32px}
+dialog::backdrop{background:rgba(20,19,17,.72)}
+dialog h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:12px}
+dialog p{font-size:15px;color:#45433e}
+dialog .sum{margin:20px 0;padding:14px 0;border-block:1px solid #c9c4ba;font-size:14px;display:flex;justify-content:space-between;gap:16px}
+dialog .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+dialog .acts a,dialog .acts button{font:inherit;font-size:15px;padding:12px 20px;cursor:pointer;text-decoration:none;border:1px solid var(--sumi)}
+dialog .acts a{background:var(--sumi);color:var(--paper)}
+dialog .acts button{background:none;color:var(--sumi)}
+@media (max-width:860px){.shop{grid-template-columns:1fr}}
 
 /* 登録 */
 .signup{background:var(--stone);color:var(--sumi)}
@@ -144,7 +180,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
           <span data-ja>日本の抹茶に、食用の炭を合わせたラテミックス。見た目は墨のように黒く、香りと味は抹茶です。</span>
           <span data-en>A latte mix of Japanese matcha and food-grade vegetable charcoal. Black as ink in the glass, matcha in every sip.</span>
         </p>
-        <a class="cta" href="#signup"><span data-ja>発売のお知らせを受け取る</span><span data-en>Get launch updates</span></a>
+        <a class="cta" href="#shop"><span data-ja>商品を見る</span><span data-en>See the product</span></a>
       </div>
     </div>
     <div class="hero-photo">
@@ -188,6 +224,44 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       <p class="note"><span data-ja>分量の目安は発売時にお知らせします。</span><span data-en>Recommended amounts will be shared at launch.</span></p>
     </div>
   </section>
+
+  <section class="wrap shop" id="shop">
+    <figure>
+      <img src="img/sumi-matcha-pouch.jpg" width="760" height="950" alt="SUMI MATCHA チャコール抹茶ラテミックス 100g のパウチ" loading="lazy">
+    </figure>
+    <div>
+      <span class="demo"><span data-ja>デモ：まだ購入はできません</span><span data-en>Demo: not on sale yet</span></span>
+      <h2><span data-ja>チャコール抹茶ラテミックス</span><span data-en>Charcoal Matcha Latte Mix</span></h2>
+      <p class="sub"><span data-ja>無糖・100g・約20杯分</span><span data-en>Unsweetened · 100 g · about 20 servings</span></p>
+      <p class="price" id="price">¥2,980<small><span data-ja>税込・予定価格</span><span data-en>planned price</span></small></p>
+      <fieldset>
+        <legend><span data-ja>パッケージ</span><span data-en>Package</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="pkg" value="pouch" checked><span class="box"><span data-ja>パウチ 100g</span><span data-en>Pouch, 100 g</span></span></label>
+          <label><input type="radio" name="pkg" value="box"><span class="box"><span data-ja>ギフト箱 100g</span><span data-en>Gift box, 100 g</span></span></label>
+        </div>
+      </fieldset>
+      <div class="buy">
+        <div class="qty" aria-label="数量">
+          <button type="button" id="minus" aria-label="1つ減らす">−</button>
+          <output id="qty" aria-live="polite">1</output>
+          <button type="button" id="plus" aria-label="1つ増やす">+</button>
+        </div>
+        <button type="button" class="go" id="buy"><span data-ja>購入する</span><span data-en>Buy now</span></button>
+      </div>
+      <p class="ship"><span data-ja>国内送料無料（予定）。海外発送の対象国は発売時にお知らせします。</span><span data-en>Shipping countries outside Japan will be announced at launch.</span></p>
+    </div>
+  </section>
+
+  <dialog id="dlg" aria-labelledby="dlg-t">
+    <h3 id="dlg-t"><span data-ja>まだ発売前です</span><span data-en>Not on sale yet</span></h3>
+    <p><span data-ja>このボタンは購入画面のデモです。注文や決済は行われていません。発売時にお知らせを受け取るには、メールアドレスをご登録ください。</span><span data-en>This button is a demo of the checkout. No order or payment was made. Sign up to hear when it launches.</span></p>
+    <div class="sum"><span id="dlg-item"></span><span id="dlg-total"></span></div>
+    <div class="acts">
+      <a href="#signup" id="dlg-go"><span data-ja>発売のお知らせを受け取る</span><span data-en>Get launch updates</span></a>
+      <button type="button" id="dlg-close"><span data-ja>閉じる</span><span data-en>Close</span></button>
+    </div>
+  </dialog>
 
   <section class="signup" id="signup">
     <div class="wrap">
@@ -239,6 +313,33 @@ document.getElementById('form').addEventListener('submit',async e=>{
   }
   f.style.display='none';document.getElementById('thanks').style.display='block';
 });
+
+// 購入デモ
+const PRICES={pouch:{ja:2980,en:20},box:{ja:3480,en:24}};
+let qty=1;
+const lang=()=>document.documentElement.lang==='en'?'en':'ja';
+const pkg=()=>document.querySelector('input[name=pkg]:checked').value;
+const fmt=n=>lang()==='en'?'US$'+n.toFixed(2).replace('.00',''):'¥'+n.toLocaleString('ja-JP');
+function renderPrice(){
+  const pr=document.getElementById('price');
+  pr.firstChild.nodeValue=fmt(PRICES[pkg()][lang()]);
+  document.getElementById('qty').textContent=qty;
+  document.getElementById('minus').disabled=qty<=1;
+}
+document.querySelectorAll('input[name=pkg]').forEach(r=>r.addEventListener('change',renderPrice));
+document.getElementById('minus').addEventListener('click',()=>{if(qty>1){qty--;renderPrice()}});
+document.getElementById('plus').addEventListener('click',()=>{if(qty<10){qty++;renderPrice()}});
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',renderPrice));
+const dlg=document.getElementById('dlg');
+document.getElementById('buy').addEventListener('click',()=>{
+  const names={pouch:{ja:'パウチ 100g',en:'Pouch, 100 g'},box:{ja:'ギフト箱 100g',en:'Gift box, 100 g'}};
+  document.getElementById('dlg-item').textContent=names[pkg()][lang()]+' × '+qty;
+  document.getElementById('dlg-total').textContent=fmt(PRICES[pkg()][lang()]*qty);
+  dlg.showModal();
+});
+document.getElementById('dlg-close').addEventListener('click',()=>dlg.close());
+document.getElementById('dlg-go').addEventListener('click',()=>{dlg.close();setTimeout(()=>document.getElementById('email').focus({preventScroll:true}),400)});
+renderPrice();
 </script>
 </body>
 </html>
