@@ -100,17 +100,15 @@ legend{font-size:13px;color:var(--mist);margin-bottom:10px}
 .opts input:checked+.box{border-color:var(--paper);color:var(--paper);background:var(--ash)}
 .opts input:focus-visible+.box{outline:2px solid var(--matcha);outline-offset:3px}
 .buy{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.qty{display:flex;align-items:stretch;border:1px solid var(--rule)}
-.qty button{background:none;border:0;color:var(--paper);font:inherit;font-size:18px;width:44px;cursor:pointer}
-.qty output{min-width:36px;display:grid;place-items:center;font-size:15px}
-.buy .go{flex:1 1 220px;background:var(--paper);color:var(--sumi);border:0;font:inherit;font-size:16px;padding:16px 24px;cursor:pointer;transition:background .2s}
+.buy .go{flex:1 1 220px;text-align:center;text-decoration:none;background:var(--paper);color:var(--sumi);border:0;font:inherit;font-size:16px;padding:16px 24px;cursor:pointer;transition:background .2s}
 .buy .go:hover{background:#fff}
 .ship{margin-top:20px;font-size:13px;color:var(--mist)}
+.ship+.ship{margin-top:8px}
+[hidden]{display:none!important}
 dialog{margin:auto;max-width:min(440px,calc(100vw - 40px));border:0;background:var(--paper);color:var(--sumi);padding:36px 32px}
 dialog::backdrop{background:rgba(20,19,17,.72)}
 dialog h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:12px}
 dialog p{font-size:15px;color:#45433e}
-dialog .sum{margin:20px 0;padding:14px 0;border-block:1px solid #c9c4ba;font-size:14px;display:flex;justify-content:space-between;gap:16px}
 dialog .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 dialog .acts a,dialog .acts button{font:inherit;font-size:15px;padding:12px 20px;cursor:pointer;text-decoration:none;border:1px solid var(--sumi)}
 dialog .acts a{background:var(--sumi);color:var(--paper)}
@@ -230,10 +228,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       <img src="img/sumi-matcha-pouch.jpg" width="760" height="950" alt="SUMI MATCHA チャコール抹茶ラテミックス 100g のパウチ" loading="lazy">
     </figure>
     <div>
-      <span class="demo"><span data-ja>デモ：まだ購入はできません</span><span data-en>Demo: not on sale yet</span></span>
+      <span class="demo" id="soon"><span data-ja>発売準備中</span><span data-en>Coming soon</span></span>
       <h2><span data-ja>チャコール抹茶ラテミックス</span><span data-en>Charcoal Matcha Latte Mix</span></h2>
       <p class="sub"><span data-ja>無糖・100g・約20杯分</span><span data-en>Unsweetened · 100 g · about 20 servings</span></p>
-      <p class="price" id="price">¥2,980<small><span data-ja>税込・予定価格</span><span data-en>planned price</span></small></p>
+      <p class="price"><span id="price">¥2,980</span><small id="price-note"></small></p>
       <fieldset>
         <legend><span data-ja>パッケージ</span><span data-en>Package</span></legend>
         <div class="opts">
@@ -242,21 +240,17 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
         </div>
       </fieldset>
       <div class="buy">
-        <div class="qty" aria-label="数量">
-          <button type="button" id="minus" aria-label="1つ減らす">−</button>
-          <output id="qty" aria-live="polite">1</output>
-          <button type="button" id="plus" aria-label="1つ増やす">+</button>
-        </div>
-        <button type="button" class="go" id="buy"><span data-ja>購入する</span><span data-en>Buy now</span></button>
+        <a class="go" id="buy" href="#signup"><span data-ja>購入する</span><span data-en>Buy now</span></a>
       </div>
-      <p class="ship"><span data-ja>国内送料無料（予定）。海外発送の対象国は発売時にお知らせします。</span><span data-en>Shipping countries outside Japan will be announced at launch.</span></p>
+      <p class="ship" id="ship-closed"><span data-ja>発売日と発送できる国は、発売時にお知らせします。</span><span data-en>Launch date and shipping countries will be announced at launch.</span></p>
+      <p class="ship" id="ship-open" hidden><span data-ja>数量・お届け先・送料は、次の購入画面で選べます。お支払いはStripeの安全な決済画面で行います。</span><span data-en>Choose quantity and delivery address on the next screen. Shipping is shown before you pay. Payment is handled securely by Stripe.</span></p>
+      <p class="ship" id="legal" hidden><a href="tokushoho.html"><span data-ja>特定商取引法に基づく表記</span><span data-en>Legal notice (Japan)</span></a></p>
     </div>
   </section>
 
   <dialog id="dlg" aria-labelledby="dlg-t">
     <h3 id="dlg-t"><span data-ja>まだ発売前です</span><span data-en>Not on sale yet</span></h3>
-    <p><span data-ja>このボタンは購入画面のデモです。注文や決済は行われていません。発売時にお知らせを受け取るには、メールアドレスをご登録ください。</span><span data-en>This button is a demo of the checkout. No order or payment was made. Sign up to hear when it launches.</span></p>
-    <div class="sum"><span id="dlg-item"></span><span id="dlg-total"></span></div>
+    <p><span data-ja>現在、発売に向けて準備しています。発売のお知らせを受け取るには、メールアドレスをご登録ください。</span><span data-en>We're getting ready to launch. Leave your email and we'll let you know when it's available.</span></p>
     <div class="acts">
       <a href="#signup" id="dlg-go"><span data-ja>発売のお知らせを受け取る</span><span data-en>Get launch updates</span></a>
       <button type="button" id="dlg-close"><span data-ja>閉じる</span><span data-en>Close</span></button>
@@ -314,32 +308,43 @@ document.getElementById('form').addEventListener('submit',async e=>{
   f.style.display='none';document.getElementById('thanks').style.display='block';
 });
 
-// 購入デモ
-const PRICES={pouch:{ja:2980,en:20},box:{ja:3480,en:24}};
-let qty=1;
+// ===== 販売設定 =====
+// 販売を始めるときは open を true にし、Stripe の Payment Link の URL を入れる
+const SHOP={
+  open:false,
+  links:{
+    pouch:'',  // 例：https://buy.stripe.com/xxxxxxxx
+    box:''
+  },
+  prices:{pouch:{ja:2980,en:20},box:{ja:3480,en:24}}
+};
+// =====================
 const lang=()=>document.documentElement.lang==='en'?'en':'ja';
 const pkg=()=>document.querySelector('input[name=pkg]:checked').value;
-const fmt=n=>lang()==='en'?'US$'+n.toFixed(2).replace('.00',''):'¥'+n.toLocaleString('ja-JP');
-function renderPrice(){
-  const pr=document.getElementById('price');
-  pr.firstChild.nodeValue=fmt(PRICES[pkg()][lang()]);
-  document.getElementById('qty').textContent=qty;
-  document.getElementById('minus').disabled=qty<=1;
+const fmt=n=>lang()==='en'?'US$'+n:'¥'+n.toLocaleString('ja-JP');
+const isOpen=()=>SHOP.open&&!!SHOP.links[pkg()];
+function renderShop(){
+  document.getElementById('price').textContent=fmt(SHOP.prices[pkg()][lang()]);
+  const open=isOpen();
+  const note={ja:open?'税込・送料別':'税込・予定価格',en:open?'plus shipping':'planned price'};
+  document.getElementById('price-note').textContent=note[lang()];
+  document.getElementById('soon').hidden=open;
+  document.getElementById('ship-closed').hidden=open;
+  document.getElementById('ship-open').hidden=!open;
+  document.getElementById('legal').hidden=!SHOP.open;
+  const b=document.getElementById('buy');
+  b.href=open?SHOP.links[pkg()]:'#signup';
 }
-document.querySelectorAll('input[name=pkg]').forEach(r=>r.addEventListener('change',renderPrice));
-document.getElementById('minus').addEventListener('click',()=>{if(qty>1){qty--;renderPrice()}});
-document.getElementById('plus').addEventListener('click',()=>{if(qty<10){qty++;renderPrice()}});
-document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',renderPrice));
+document.querySelectorAll('input[name=pkg]').forEach(r=>r.addEventListener('change',renderShop));
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',renderShop));
 const dlg=document.getElementById('dlg');
-document.getElementById('buy').addEventListener('click',()=>{
-  const names={pouch:{ja:'パウチ 100g',en:'Pouch, 100 g'},box:{ja:'ギフト箱 100g',en:'Gift box, 100 g'}};
-  document.getElementById('dlg-item').textContent=names[pkg()][lang()]+' × '+qty;
-  document.getElementById('dlg-total').textContent=fmt(PRICES[pkg()][lang()]*qty);
-  dlg.showModal();
+document.getElementById('buy').addEventListener('click',e=>{
+  if(isOpen())return; // Stripe の購入画面へ
+  e.preventDefault();dlg.showModal();
 });
 document.getElementById('dlg-close').addEventListener('click',()=>dlg.close());
 document.getElementById('dlg-go').addEventListener('click',()=>{dlg.close();setTimeout(()=>document.getElementById('email').focus({preventScroll:true}),400)});
-renderPrice();
+renderShop();
 </script>
 </body>
 </html>
