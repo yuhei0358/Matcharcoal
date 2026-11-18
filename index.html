@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SUMI MATCHA｜炭と抹茶のラテミックス</title>
-<meta name="description" content="日本の抹茶に、食用の炭を合わせたラテミックス。SUMI MATCHA の発売のお知らせを受け取れます。">
-<meta property="og:title" content="SUMI MATCHA">
+<title>MATCHARCOAL｜炭と抹茶のラテミックス</title>
+<meta name="description" content="日本の抹茶に、食用の炭を合わせたラテミックス。MATCHARCOAL の発売のお知らせを受け取れます。">
+<meta property="og:title" content="MATCHARCOAL">
 <meta property="og:description" content="Japanese matcha, poured black.">
-<meta property="og:image" content="https://matcharcoal.pages.dev/img/sumi-matcha-package.jpg">
+<meta property="og:image" content="https://matcharcoal.pages.dev/img/sumi-matcha-glass.jpg">
 <meta name="theme-color" content="#1c1b19">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@ html[lang=en] .hero h1 .h{display:block!important}
 
 /* ヘッダー */
 .top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:22px var(--gutter)}
-.mark{font-family:var(--serif);font-size:15px;letter-spacing:.32em;text-decoration:none;white-space:nowrap}
+.mark{font-family:var(--serif);font-size:15px;letter-spacing:.24em;text-decoration:none;white-space:nowrap}
 .lang{display:flex;gap:18px;font-size:13px;background:var(--sumi);padding:6px 14px}
 .lang button{background:none;border:0;color:var(--mist);font:inherit;cursor:pointer;padding:4px 0;border-bottom:1px solid transparent}
 .lang button[aria-pressed=true]{color:var(--paper);border-color:var(--paper)}
@@ -57,7 +57,7 @@ html[lang=en] .hero h1 .h{display:block!important}
 .cta{display:inline-block;font-size:15px;text-decoration:none;padding:14px 26px;border:1px solid var(--paper);transition:background .25s,color .25s}
 .cta:hover{background:var(--paper);color:var(--sumi)}
 .hero-photo{position:relative;overflow:hidden;background:var(--ash)}
-.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 55%}
 
 /* 本文セクション共通 */
 .wrap{padding:clamp(80px,12vw,160px) var(--gutter)}
@@ -67,7 +67,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,44px);lin
 
 /* 商品 */
 .about{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:end}
-.about figure img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.about figure img{width:100%;height:auto;aspect-ratio:1024/1180;object-fit:cover}
 .about figcaption{font-size:12px;color:var(--mist);margin-top:12px}
 .spec{margin-top:48px;border-top:1px solid var(--rule)}
 .spec div{display:grid;grid-template-columns:7em 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:14px}
@@ -85,6 +85,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,44px);lin
 /* 購入（デモ） */
 .shop{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,96px);align-items:center}
 .shop figure{background:var(--ash)}
+.shop figcaption{font-size:12px;color:var(--mist);padding:10px 0 0;background:var(--sumi)}
 .shop figure img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
 .demo{display:inline-block;font-size:12px;color:var(--sumi);background:var(--matcha);padding:2px 10px;margin-bottom:20px}
 .shop h2{margin-bottom:8px}
@@ -159,7 +160,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
 <body>
 
 <header class="top">
-  <a class="mark" href="#">SUMI MATCHA</a>
+  <a class="mark" href="#">MATCHARCOAL</a>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-l="ja" aria-pressed="true">日本語</button>
     <button type="button" data-l="en" aria-pressed="false">English</button>
@@ -182,14 +183,13 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       </div>
     </div>
     <div class="hero-photo">
-      <img src="img/sumi-matcha-package.jpg" width="1122" height="1402" alt="SUMI MATCHA のパッケージと、抹茶と炭の二層のラテ" fetchpriority="high">
+      <img src="img/sumi-matcha-glass.jpg" width="1254" height="1254" alt="抹茶ラテと黒い層が二層になったアイスラテ" fetchpriority="high">
     </div>
   </section>
 
   <section class="wrap about">
     <figure>
-      <img src="img/sumi-matcha-glass.jpg" width="1254" height="1254" alt="抹茶ラテと黒い層が二層になったアイスラテ" loading="lazy">
-      <figcaption><span data-ja>イメージ</span><span data-en>Image for illustration</span></figcaption>
+      <img src="img/matcharcoal-label.jpg" width="1024" height="1180" alt="MATCHARCOAL のラベル。墨色の地に抹茶色の筆の線" loading="lazy">
     </figure>
     <div>
       <h2><span data-ja>抹茶と、炭。</span><span data-en>Matcha and charcoal.</span></h2>
@@ -225,7 +225,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
 
   <section class="wrap shop" id="shop">
     <figure>
-      <img src="img/sumi-matcha-pouch.jpg" width="760" height="950" alt="SUMI MATCHA チャコール抹茶ラテミックス 100g のパウチ" loading="lazy">
+      <img src="img/matcharcoal-pouch.jpg" width="760" height="950" alt="MATCHARCOAL のラベルを貼った銀色のパウチ（イメージ）" loading="lazy">
+      <figcaption><span data-ja>イメージ</span><span data-en>Image for illustration</span></figcaption>
     </figure>
     <div>
       <span class="demo" id="soon"><span data-ja>発売準備中</span><span data-en>Coming soon</span></span>
@@ -281,7 +282,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
 </main>
 
 <footer>
-  <span>SUMI MATCHA</span>
+  <span>MATCHARCOAL</span>
   <span>© 2026 JourneyMate Inc.</span>
 </footer>
 
