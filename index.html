@@ -199,7 +199,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       </div>
       <dl class="spec">
         <div><dt><span data-ja>原材料</span><span data-en>Ingredients</span></dt><dd><span data-ja>日本産抹茶、食用植物炭（詳細は発売時に公開）</span><span data-en>Japanese matcha, food-grade vegetable carbon (full details at launch)</span></dd></div>
-        <div><dt><span data-ja>内容量</span><span data-en>Size</span></dt><dd><span data-ja>100g（予定）</span><span data-en>100 g (planned)</span></dd></div>
+        <div><dt><span data-ja>内容量</span><span data-en>Size</span></dt><dd><span data-ja>40g（予定）</span><span data-en>40 g (planned)</span></dd></div>
         <div><dt><span data-ja>楽しみ方</span><span data-en>Use it for</span></dt><dd><span data-ja>ラテ、アイス、焼き菓子</span><span data-en>Lattes, iced drinks, baking</span></dd></div>
       </dl>
     </div>
@@ -231,15 +231,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
     <div>
       <span class="demo" id="soon"><span data-ja>発売準備中</span><span data-en>Coming soon</span></span>
       <h2><span data-ja>チャコール抹茶ラテミックス</span><span data-en>Charcoal Matcha Latte Mix</span></h2>
-      <p class="sub"><span data-ja>無糖・100g・約20杯分</span><span data-en>Unsweetened · 100 g · about 20 servings</span></p>
+      <p class="sub"><span data-ja>無糖・40g・約20杯分（1杯2g目安）</span><span data-en>Unsweetened · 40 g · about 20 servings (2 g each)</span></p>
       <p class="price"><span id="price">¥2,980</span><small id="price-note"></small></p>
-      <fieldset>
-        <legend><span data-ja>パッケージ</span><span data-en>Package</span></legend>
-        <div class="opts">
-          <label><input type="radio" name="pkg" value="pouch" checked><span class="box"><span data-ja>パウチ 100g</span><span data-en>Pouch, 100 g</span></span></label>
-          <label><input type="radio" name="pkg" value="box"><span class="box"><span data-ja>ギフト箱 100g</span><span data-en>Gift box, 100 g</span></span></label>
-        </div>
-      </fieldset>
       <div class="buy">
         <a class="go" id="buy" href="#signup"><span data-ja>購入する</span><span data-en>Buy now</span></a>
       </div>
@@ -314,14 +307,13 @@ document.getElementById('form').addEventListener('submit',async e=>{
 const SHOP={
   open:false,
   links:{
-    pouch:'',  // 例：https://buy.stripe.com/xxxxxxxx
-    box:''
+    pouch:''   // 例：https://buy.stripe.com/xxxxxxxx
   },
-  prices:{pouch:{ja:2980,en:20},box:{ja:3480,en:24}}
+  prices:{pouch:{ja:1480,en:10}}
 };
 // =====================
 const lang=()=>document.documentElement.lang==='en'?'en':'ja';
-const pkg=()=>document.querySelector('input[name=pkg]:checked').value;
+const pkg=()=>'pouch';
 const fmt=n=>lang()==='en'?'US$'+n:'¥'+n.toLocaleString('ja-JP');
 const isOpen=()=>SHOP.open&&!!SHOP.links[pkg()];
 function renderShop(){
@@ -336,7 +328,6 @@ function renderShop(){
   const b=document.getElementById('buy');
   b.href=open?SHOP.links[pkg()]:'#signup';
 }
-document.querySelectorAll('input[name=pkg]').forEach(r=>r.addEventListener('change',renderShop));
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',renderShop));
 const dlg=document.getElementById('dlg');
 document.getElementById('buy').addEventListener('click',e=>{
