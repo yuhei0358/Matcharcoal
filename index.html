@@ -307,10 +307,16 @@ document.getElementById('form').addEventListener('submit',async e=>{
 const SHOP={
   open:false,
   links:{
-    pouch:''   // 例：https://buy.stripe.com/xxxxxxxx
+    pouch:''   // 本番：https://buy.stripe.com/xxxxxxxx
+  },
+  // テスト用（URLの末尾に ?shop=test を付けたときだけ使う。お金は動かない）
+  testLinks:{
+    pouch:''   // 例：https://buy.stripe.com/test_xxxxxxxx
   },
   prices:{pouch:{ja:1480,en:10}}
 };
+const TEST=new URLSearchParams(location.search).get('shop')==='test'&&!!SHOP.testLinks.pouch;
+if(TEST){SHOP.open=true;SHOP.links=SHOP.testLinks;}
 // =====================
 const lang=()=>document.documentElement.lang==='en'?'en':'ja';
 const pkg=()=>'pouch';
@@ -337,6 +343,7 @@ document.getElementById('buy').addEventListener('click',e=>{
 document.getElementById('dlg-close').addEventListener('click',()=>dlg.close());
 document.getElementById('dlg-go').addEventListener('click',()=>{dlg.close();setTimeout(()=>document.getElementById('email').focus({preventScroll:true}),400)});
 renderShop();
+if(TEST){const t=document.createElement('div');t.textContent='テストモード：実際の決済は行われません（テスト用カード 4242 4242 4242 4242）';t.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:20;background:#e2b45c;color:#1c1b19;font-size:13px;text-align:center;padding:8px 16px';document.body.appendChild(t);}
 </script>
 </body>
 </html>
